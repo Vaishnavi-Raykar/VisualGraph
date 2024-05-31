@@ -440,12 +440,12 @@ function App() {
     fetchWeather();
   };
 
-  const addTemperature = async (city, date, temp) => {
+  const addTemperature = async (cityName, date, temp) => {
     try {
       console.log("Add Temperature");
-      console.log(city, date, temp);
+      console.log(cityName, date, temp);
       const response = await axios.post("http://localhost:5000/temperatures", {
-        city,
+        cityName,
         date,
         temp,
       });
@@ -600,9 +600,9 @@ function App() {
           Fetch Weather
         </button>
       </div>
-      {city && (
+      {cityName && (
         <h2 className="text-2xl font-bold text-center">
-          Weather Forecast for {city}...
+          Weather Forecast for {cityName}...
         </h2>
       )}
       <div className="flex flex-col gap-5 items-center justify-between ">
@@ -663,7 +663,7 @@ function App() {
             <tbody>
               {historyData.map((record, index) => (
                 <tr key={index}>
-                  <td className="border px-4 py-2">{record.city}</td>
+                  <td className="border px-4 py-2">{record.cityName}</td>
                   <td className="border px-4 py-2">
                     {record.date.map((date, dateIndex) => (
                       <div key={dateIndex} className="py-1">

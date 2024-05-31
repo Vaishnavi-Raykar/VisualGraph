@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/mydatabase', {
 
 
 const TemperatureSchema = new mongoose.Schema({
-  city: {
+  cityName: {
     type: String,
     required: true
   },
@@ -69,7 +69,7 @@ app.get('/temperatures', async (req, res) => {
 
 
 app.post('/temperatures', async (req, res) => {
-  const { city,date, temp } = req.body;
+  const { cityName,date, temp } = req.body;
   const newTemperature = new Temperature({ cityName,date, temp });
   try {
       const savedTemperature = await newTemperature.save();
